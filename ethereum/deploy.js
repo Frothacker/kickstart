@@ -23,8 +23,8 @@ const deploy = async () => {
 };
 deploy();
 // every time you deploy, 
-// the address and ABI need to be updated to front end
-// so that front end is interacting with the current contract 
+// the address and ABI values need to be sent to front end
+// so that front end is interacting with the correct contract 
 
 
 

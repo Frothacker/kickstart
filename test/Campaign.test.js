@@ -14,6 +14,7 @@ let campaign;
 beforeEach( async () => {
   accounts = await web3.eth.getAccounts();
 
+  // deploy factory
   factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
     .deploy({ data: '0x' + compiledFactory.bytecode })
     .send({ from: accounts[0], gas: '1000000' });
@@ -26,7 +27,7 @@ beforeEach( async () => {
   //  es6 syntax array descructuring. `[index0] = array;` assigns the first value of array to 'index0'
   [campaignAddress] = await factory.methods.getDeployedCampaigns().call();
 
-  //create interface in javascript. 
+  //create ABI interface in javascript. 
   campaign = await new web3.eth.Contract(
     JSON.parse(compiledCampaign.interface),
     campaignAddress //deployed at this address. 
